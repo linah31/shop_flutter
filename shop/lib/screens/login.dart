@@ -1,15 +1,13 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:shop/screens/login.dart';
+import 'package:shop/screens/signup.dart';
 
 import '../const/colors.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<Login> createState() => _LoginState();
 }
 
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -18,7 +16,7 @@ String p =
 RegExp regExp = new RegExp(p);
 bool obserText = true;
 
-class _SignUpState extends State<SignUp> {
+class _LoginState extends State<Login> {
   void validation() {
     final FormState? _form = _formKey.currentState;
     if (_form!.validate()) {
@@ -32,58 +30,27 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Container(
-        child: Form(
-          key: _formKey,
+      body: Form(
+        key: _formKey,
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 10),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                height: 220,
-                width: double.infinity,
-                color: AppColors.lightblue,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Text(
-                      "Register",
-                      style: TextStyle(
-                          fontSize: 50,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.lightpurble),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                height: 400,
+                height: 350,
                 margin: EdgeInsets.symmetric(horizontal: 10),
                 width: double.infinity,
                 color: AppColors.lightblue,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    TextFormField(
-                      validator: (value) {
-                        if (value == "") {
-                          return "please Fill Username";
-                        } else if (value!.length < 6) {
-                          return "Username is to short";
-                        }
-
-                        return "";
-                      },
-                      decoration: InputDecoration(
-                        hintText: "Username",
-                        icon: Icon(
-                          Icons.abc,
-                          color: AppColors.lightpurble,
-                        ),
-                        border: OutlineInputBorder(),
-                        hintStyle: TextStyle(color: AppColors.lightpurble),
-                      ),
+                    Text(
+                      "Login",
+                      style: TextStyle(
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.lightpurble),
                     ),
                     TextFormField(
                       validator: (value) {
@@ -123,6 +90,7 @@ class _SignUpState extends State<SignUp> {
                         border: OutlineInputBorder(),
                         suffixIcon: GestureDetector(
                           onTap: () {
+                            FocusScope.of(context).unfocus();
                             setState(() {
                               obserText = !obserText;
                             });
@@ -138,30 +106,11 @@ class _SignUpState extends State<SignUp> {
                         hintStyle: TextStyle(color: AppColors.lightpurble),
                       ),
                     ),
-                    TextFormField(
-                      validator: (value) {
-                        if (value == "") {
-                          return "please fill phone number";
-                        } else if (value!.length < 11) {
-                          return "phone number must be 11 digits";
-                        }
-                        return "";
-                      },
-                      decoration: InputDecoration(
-                        hintText: "Phone Number",
-                        icon: Icon(
-                          Icons.phone,
-                          color: AppColors.lightpurble,
-                        ),
-                        border: OutlineInputBorder(),
-                        hintStyle: TextStyle(color: AppColors.lightpurble),
-                      ),
-                    ),
                     Container(
                       height: 45,
-                      color: AppColors.lightblue,
+                      width: double.infinity,
                       child: RaisedButton(
-                          child: Text("Register",
+                          child: Text("Login",
                               style: TextStyle(color: AppColors.lightblue)),
                           color: AppColors.lightpurble,
                           onPressed: () {
@@ -170,18 +119,18 @@ class _SignUpState extends State<SignUp> {
                     ),
                     Row(
                       children: [
-                        Text("Have an account!"),
+                        Text("I don't have an account!"),
                         SizedBox(
                           width: 10,
                         ),
                         GestureDetector(
                           onTap: () {
                             Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (ctx) => Login()),
+                              MaterialPageRoute(builder: (ctx) => SignUp()),
                             );
                           },
                           child: Text(
-                            "Login",
+                            "Register",
                             style: TextStyle(
                               color: AppColors.darkcyan,
                               fontSize: 25,

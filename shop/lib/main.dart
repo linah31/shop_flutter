@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shop/const/colors.dart';
+import 'package:shop/screens/login.dart';
 import 'package:shop/screens/signup.dart';
 
 void main()=> runApp(MyApp());
@@ -13,8 +15,10 @@ class MyApp extends StatelessWidget {
     return   MaterialApp(
         title: "My Flutter App",
         themeMode: ThemeMode.system,
+        theme: new ThemeData(scaffoldBackgroundColor: AppColors.lightblue),
+
         debugShowCheckedModeBanner: false,
-        home: SignUp()
+        home: Login()
     );
   }
 }
