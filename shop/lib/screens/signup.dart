@@ -3,6 +3,8 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
+import '../const/colors.dart';
+
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
 
@@ -116,7 +118,7 @@ class _SignUpState extends State<SignUp> {
                           },
                           child: Icon(
                            obserText==true? Icons.visibility:Icons.visibility_off,
-                            color: Colors.black,
+                            color: AppColors.PRIMARY_COLOR,
                           ),
                         ),
                         hintStyle: TextStyle(color: Colors.black),
